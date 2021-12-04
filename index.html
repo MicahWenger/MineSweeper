@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Minesweeper</title>
+        <style media="screen">
+            body{
+                background-color: black;
+            }
+            #bigBoi{
+                padding: 10px;
+                background-color: #bbbbbb;
+            }
+            #header{
+                margin-bottom: 10px;
+                height: 50px;
+                background-color: #888888;
+            }
+            #header > div{
+
+                background-color: #666666;
+                height: calc(100% - 6px);
+                line-height: calc(100% - 6px);
+                font-size: 50px;
+                font-weight: bold;
+                text-align: center;
+
+                color: #ee2222;
+                position: relative;
+                float: left;
+            }
+            #bombCounter{
+                width: 100px;
+                border: inset;
+            }
+            #timer{
+                margin-left: calc(50% - 106px - 24px);
+                border: inset;
+                width: 100px;
+            }
+            #restart{
+                background-image: url('images/smile.png');
+                background-size: cover;
+                height: 48px;
+                width: 48px;
+                margin-top: 1px;
+                margin-left: calc(50% - 106px - 24px);
+                position: relative;
+                float: left;
+            }
+            #restart:active{
+                border: inset;
+                height: 45px;
+                width: 45px;
+                margin-left: calc(50% - 106px - 27px);
+            }
+
+            #cont{
+                background-color: ed;
+                z-index: 5;
+                border-width: 2px;
+                border-color: #444444;
+            }
+            .row{
+                width: 100%;
+                background-color: green;
+                position: relative;
+                float: left;
+                z-index: 10;
+            }
+            .box{
+                height: calc(100% - 6px);
+                background-color: #aaaaaa;
+                border: outset;
+                position: relative;
+                float: left;
+                z-index: 15;
+                text-align: center;
+                font-size: 30px;
+                background-size: cover;
+            }
+            .box:hover{
+                background-color: #999999;
+            }
+            .box:active{
+                border: inset;
+            }
+
+            /* configuration */
+            #custom{
+                display: none;
+                background-color: #aaaaaa;
+                width: 150px;
+                height: 120px;
+                font-size: 20px;
+                padding: 5px;
+            }
+            #custom > input {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                width: 40px;
+            }
+            #applyBtn{
+                background-color: blue;
+                color: white;
+                border-radius: 15px;
+                font-size: 20px;
+                text-align: center;
+                width: 60px;
+                margin-left: 45px;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            #applyBtn:hover{
+                cursor: pointer;
+            }
+
+            #solveBtn{
+                background-color: red;
+                font-size: 50px;
+                height: 60px;
+                width: 150px;
+                border-radius:10px;
+                text-align: center;
+                float: left;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bigBoi">
+            <div id="header">
+                <div id="bombCounter"></div>
+                <div id="restart" onclick="reset()"></div>
+                <div id="timer">0</div>
+            </div>
+            <div id="cont"></div>
+        </div>
+        <div id="config">
+            <select id="presetSelect" onchange="sendPreset(this.value)">
+                <option value="easy">Easy</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="expert">Expert</option>
+                <option value="custom">Custom</option>
+            </select>
+            <div id="custom">
+                width: &nbsp;<input type="number" id="C_width" value="30"><br>
+                height:&nbsp;<input type="number" id="C_height" value="16"><br>
+                mines: &nbsp;<input type="number" id="C_mines" value="99">
+                <div id="applyBtn" onclick="setCustom()">Apply</div>
+            </div>
+            <div id="solveBtn" onclick="solve()">Solve</div>
+        </div>
+    </body>
+    <script src="index.js" charset="utf-8"></script>
+</html>
